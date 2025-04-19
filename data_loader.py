@@ -15,6 +15,8 @@ def get_data() -> tuple[DataFrame, DataFrame]:
         batters.append(
             {
                 "name": batter["playerFullName"],
+                "postion": batter["position"],
+                "pos_abb": batter["primaryPositionAbbrev"],
                 "avg": batter["avg"],
                 "at_bats": batter["atBats"],
                 "obp": batter["obp"],
@@ -29,6 +31,7 @@ def get_data() -> tuple[DataFrame, DataFrame]:
         pitchers.append(
             {
                 "name": pitcher["playerFullName"],
+                "position": pitcher["position"],
                 "wins": pitcher["wins"],
                 "losses": pitcher["losses"],
                 "era": pitcher["era"],
@@ -48,4 +51,3 @@ def get_data() -> tuple[DataFrame, DataFrame]:
             pitcher_df[column] = pitcher_df[column].astype(float)
 
     return batter_df, pitcher_df
-

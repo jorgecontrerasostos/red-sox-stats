@@ -1,4 +1,4 @@
-BATTING_URL = "https://bdfed.stitch.mlbinfra.com/bdfed/stats/player?&env=prod&season=2025&sportId=1&stats=season&group=hitting&gameType=R&limit=25&offset=0&sortStat=homeRuns&order=desc&teamId=111"
+BATTING_URL = "https://bdfed.stitch.mlbinfra.com/bdfed/stats/player?&env=prod&season=2025&sportId=1&stats=season&group=hitting&gameType=R&limit=25&offset=0&order=desc&teamId=111"
 PITCHING_URL = "https://bdfed.stitch.mlbinfra.com/bdfed/stats/player?&env=prod&season=2025&sportId=1&stats=season&group=pitching&gameType=R&limit=25&offset=0&sortStat=strikeouts&order=desc&teamId=111"
 
 BATTING_HEADERS = {
