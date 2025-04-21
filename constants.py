@@ -1,5 +1,38 @@
 BATTING_URL = "https://bdfed.stitch.mlbinfra.com/bdfed/stats/player?&env=prod&season=2025&sportId=1&stats=season&group=hitting&gameType=R&limit=25&offset=0&order=desc&teamId=111"
-PITCHING_URL = "https://bdfed.stitch.mlbinfra.com/bdfed/stats/player?&env=prod&season=2025&sportId=1&stats=season&group=pitching&gameType=R&limit=25&offset=0&sortStat=strikeouts&order=desc&teamId=111"
+PITCHING_URL = "https://bdfed.stitch.mlbinfra.com/bdfed/stats/player?&env=prod&season=2025&sportId=1&stats=season&group=pitching&gameType=R&limit=25&offset=0&&order=desc&teamId=111"
+
+teams = {
+    108: "Angels",
+    109: "Diamondbacks",
+    110: "Orioles",
+    111: "Red Sox",
+    112: "Cubs",
+    113: "Reds",
+    114: "Guardians",
+    115: "Rockies",
+    116: "Tigers",
+    117: "Astros",
+    118: "Royals",
+    119: "Dodgers",
+    120: "Nationals",
+    121: "Mets",
+    133: "Athletics",
+    134: "Pirates",
+    135: "Padres",
+    136: "Mariners",
+    137: "Giants",
+    138: "Cardinals",
+    139: "Rays",
+    140: "Rangers",
+    141: "Blue Jays",
+    142: "Twins",
+    143: "Philies",
+    144: "Braves",
+    145: "White Sox",
+    146: "Marlins",
+    147: "Yankees",
+    158: "Brewers",
+}
 
 BATTING_HEADERS = {
     "accept": "*/*",
