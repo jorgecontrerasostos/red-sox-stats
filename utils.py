@@ -1,4 +1,6 @@
 from imports import *
+from constants import teams
+
 
 def make_request(url: str, headers: dict = None, timeout: int = 10) -> Response:
     try:
@@ -10,13 +12,3 @@ def make_request(url: str, headers: dict = None, timeout: int = 10) -> Response:
         raise Exception(f"Connection-related error occurred: {conn_err}") from conn_err
     except RequestException as req_err:
         raise Exception(f"Request failed: {req_err}") from req_err
-
-def to_int(column: pd.Series) -> pd.Series:
-    if not pd.api.types.is_integer_dtype(column):
-        return column.astype("Int64")
-    return column
-
-def to_float(column: pd.Series) -> pd.Series:
-    if not pd.api.types.is_numeric_dtype(column):
-        return column.astype("Float64")
-    return column
