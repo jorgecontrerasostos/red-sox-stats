@@ -7,7 +7,6 @@ import statsapi
 
 logger = logging.getLogger(__name__)
 
-# Red Sox team ID (constant)
 RED_SOX_TEAM_ID = 111
 
 
@@ -61,9 +60,6 @@ def get_player_stats(player_id: int, stat_type: str = "season") -> Dict:
     except Exception as e:
         logger.error(f"Error fetching player stats: {e}")
         return {}
-
-
-
 
 def fetch_red_sox_roster_with_stats() -> List[Dict]:
     """

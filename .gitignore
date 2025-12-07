@@ -147,3 +147,5 @@ cython_debug/
 
 # uv
 .uv/
+
+view_single_player.py
