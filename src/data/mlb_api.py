@@ -1,9 +1,9 @@
 """MLB Stats API wrapper for fetching Red Sox data."""
 
 import logging
-import statsapi
 from typing import Dict, List
-import json
+
+import statsapi
 
 logger = logging.getLogger(__name__)
 
@@ -34,7 +34,7 @@ def get_roster() -> List[Dict[str, str]]:
         logger.error(f"Error fetching roster: {e}")
         return []
 
-def get_player_stats(player_id: int, stat_type: str = "season"):
+def get_player_stats(player_id: int, stat_type: str = "season") -> Dict:
     """
     Fetch stats for a specific player.
 
@@ -48,12 +48,24 @@ def get_player_stats(player_id: int, stat_type: str = "season"):
     Raises:
         Exception: If API call fails
     """
-    # TODO: Implement player stats fetching
-    # Hint: Use statsapi.player_stats(player_id, type=stat_type)
-    pass
+    try:
+        player_stats = statsapi.player_stat_data(player_id, type=stat_type)
+        player_name = (
+            f"{player_stats.get('first_name', '')} "
+            f"{player_stats.get('last_name', '')}"
+        )
+        logger.info(
+            f"Player stats fetched successfully: {player_name}"
+        )
+        return player_stats
+    except Exception as e:
+        logger.error(f"Error fetching player stats: {e}")
+        return {}
 
 
-def fetch_red_sox_roster_with_stats():
+
+
+def fetch_red_sox_roster_with_stats() -> List[Dict]:
     """
     Fetch Red Sox roster and basic stats for all players.
 
@@ -64,10 +76,33 @@ def fetch_red_sox_roster_with_stats():
     """
     logger.info("Fetching Red Sox roster...")
 
-    # TODO: Step 1 - Get the roster
-    # TODO: Step 2 - Parse the roster data
-    # TODO: Step 3 - For each player, get their stats
-    # TODO: Step 4 - Combine roster + stats data
-    # TODO: Step 5 - Return the combined data
+    roster = get_roster()
 
-    pass
+    if not roster:
+        logger.error("Failed to get roster")
+        return []
+
+    players_with_stats = []
+
+    for player in roster:
+        player_id = player["person"]["id"]
+        player_name = player["person"]["fullName"]
+
+        stats = get_player_stats(player_id)
+        if not stats:
+            logger.error(f"Failed to get stats for {player_name}")
+            continue
+
+        combined_data = {
+            "player_id": player_id,
+            "player_name": player_name,
+            "jersey_number": player.get("jerseyNumber", "--"),
+            "position": player.get("position", {}).get("abbreviation", "--"),
+            "status": player.get("status", {}).get("description", "Unknown"),
+            "stats": stats
+        }
+
+        players_with_stats.append(combined_data)
+    logger.info(f"Fetched complete data for {len(players_with_stats)} players")
+
+    return players_with_stats
