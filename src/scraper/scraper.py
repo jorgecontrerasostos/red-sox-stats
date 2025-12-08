@@ -1,7 +1,8 @@
-from scrapling import Fetcher
 import logging
+
+from scrapling import Fetcher
+
 from src.utils.utils import slugify_name
-from pprint import pprint
 
 logging.basicConfig(level=logging.INFO)
 
@@ -22,4 +23,4 @@ def fetch_savant_page():
 
 if __name__ == "__main__":
     page = fetch_savant_page()
-    pprint(page)
+    # pprint(page)

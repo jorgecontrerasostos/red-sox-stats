@@ -149,3 +149,5 @@ cython_debug/
 .uv/
 
 view_single_player.py
+
+LEARNING_LOG.md
