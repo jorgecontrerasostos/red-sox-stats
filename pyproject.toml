@@ -24,7 +24,12 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dependencies = [
+    "camoufox>=0.4.11",
+    "curl-cffi>=0.9.0",
     "mlb-statsapi>=1.9.0",
+    "msgspec>=0.18.6",
+    "patchright>=1.48.0.post0",
+    "playwright>=1.48.0",
     "requests>=2.32.4",
     "ruff>=0.14.8",
     "scrapling>=0.2.8",
