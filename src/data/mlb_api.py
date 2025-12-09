@@ -33,6 +33,7 @@ def get_roster() -> List[Dict[str, str]]:
         logger.error(f"Error fetching roster: {e}")
         return []
 
+
 def get_player_stats(player_id: int, stat_type: str = "season") -> Dict:
     """
     Fetch stats for a specific player.
@@ -53,13 +54,12 @@ def get_player_stats(player_id: int, stat_type: str = "season") -> Dict:
             f"{player_stats.get('first_name', '')} "
             f"{player_stats.get('last_name', '')}"
         )
-        logger.info(
-            f"Player stats fetched successfully: {player_name}"
-        )
+        logger.info(f"Player stats fetched successfully: {player_name}")
         return player_stats
     except Exception as e:
         logger.error(f"Error fetching player stats: {e}")
         return {}
+
 
 def fetch_red_sox_roster_with_stats() -> List[Dict]:
     """
@@ -95,7 +95,7 @@ def fetch_red_sox_roster_with_stats() -> List[Dict]:
             "jersey_number": player.get("jerseyNumber", "--"),
             "position": player.get("position", {}).get("abbreviation", "--"),
             "status": player.get("status", {}).get("description", "Unknown"),
-            "stats": stats
+            "stats": stats,
         }
 
         players_with_stats.append(combined_data)

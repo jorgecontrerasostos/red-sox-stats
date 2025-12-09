@@ -6,6 +6,7 @@ from typing import Dict, List
 
 logger = logging.getLogger(__name__)
 
+
 def save_roster_cache(roster_data: List[Dict]) -> None:
     cache = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -20,6 +21,7 @@ def save_roster_cache(roster_data: List[Dict]) -> None:
         json.dump(cache, f, indent=4)
 
     logger.info(f"Roster cache saved to {cache_file}")
+
 
 def load_roster_cache() -> List[Dict]:
     cache_dir = pathlib.Path("data/cache")
