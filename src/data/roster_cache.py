@@ -4,6 +4,8 @@ import pathlib
 from datetime import datetime, timedelta, timezone
 from typing import Dict, List
 
+from src.data.mlb_api import fetch_red_sox_roster_with_stats
+
 logger = logging.getLogger(__name__)
 
 
@@ -54,3 +56,17 @@ def load_roster_cache() -> List[Dict]:
 
     logger.info(f"Loaded {len(cache['data'])} players from cache (age: {age})")
     return cache["data"]
+
+def get_roster_data() -> List[Dict]:
+    cached_data = load_roster_cache()
+
+    if cached_data:
+        return cached_data
+
+    logger.info("Fetching Data from MLB")
+
+    data = fetch_red_sox_roster_with_stats()
+
+    if data:
+        save_roster_cache(data)
+    return data
