@@ -1,11 +1,11 @@
+from pprint import pprint
+
 import dash_bootstrap_components as dbc
 from dash import Dash, Input, Output, callback, dcc, html
 
 from src.dashboard.components.create_player_card import create_player_card
 from src.dashboard.components.create_stats_display import create_stats_display
 from src.data.roster_cache import get_roster_data
-
-from pprint import pprint
 
 roster_data = get_roster_data()
 pprint(roster_data)

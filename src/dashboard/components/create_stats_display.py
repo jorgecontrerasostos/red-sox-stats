@@ -1,5 +1,6 @@
 import dash_bootstrap_components as dbc
-from dash import Dash, html, dcc
+from dash import html
+
 
 def create_stats_display(player_data):
     """Create stats cards for a player."""

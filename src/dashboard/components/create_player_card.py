@@ -1,6 +1,8 @@
-from src.utils.utils import get_player_headshot_url
 import dash_bootstrap_components as dbc
-from dash import Dash, html, dcc
+from dash import html
+
+from src.utils.utils import get_player_headshot_url
+
 
 def create_player_card(player_data):
     """Create a player info card with headshot."""
