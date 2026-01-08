@@ -1,5 +1,3 @@
-from pprint import pprint
-
 import dash_bootstrap_components as dbc
 from dash import Dash, Input, Output, callback, dcc, html
 
@@ -8,7 +6,6 @@ from src.dashboard.components.create_stats_display import create_stats_display
 from src.data.roster_cache import get_roster_data
 
 roster_data = get_roster_data()
-pprint(roster_data)
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 

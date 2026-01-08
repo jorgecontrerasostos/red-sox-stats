@@ -151,7 +151,10 @@ cython_debug/
 # uv
 .uv/
 
+# Test Files
 view_single_player.py
+explore_mlb_api.py
+test_cache.py
 
 LEARNING_LOG.md
 DASHBOARD_PLAN.md
