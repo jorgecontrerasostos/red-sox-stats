@@ -164,3 +164,6 @@ dev = [
     "pytest>=8.3.5",
     "pytest-cov>=5.0.0",
 ]
+
+[tool.dagster]
+module_name = "src.pipeline.definitions"

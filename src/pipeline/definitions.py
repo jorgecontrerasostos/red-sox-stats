@@ -1,6 +1,5 @@
 from dagster import Definitions, load_assets_from_modules
-
-from dagster_project import assets  # noqa: TID252
+from src.pipeline import assets
 
 all_assets = load_assets_from_modules([assets])
 

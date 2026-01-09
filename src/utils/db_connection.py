@@ -1,9 +1,9 @@
 """Database connection utility for PostgreSQL."""
 import logging
 import os
-
 import psycopg2
-from psycopg2 import sql
+
+from dagster import EnvVar
 
 # Configure logging
 logging.basicConfig(
@@ -16,11 +16,11 @@ logger = logging.getLogger(__name__)
 def get_connection_params() -> dict:
     """Get database connection parameters from environment variables."""
     return {
-        "host": os.getenv("DB_HOST", "localhost"),
-        "port": int(os.getenv("DB_PORT", "5432")),
-        "database": os.getenv("DB_NAME", "redsox_stats"),
-        "user": os.getenv("DB_USER", os.getenv("USER")),
-        "password": os.getenv("DB_PASSWORD", "")
+        "host": EnvVar("DB_HOST", "localhost"),
+        "port": EnvVar("DB_PORT", "5432"),
+        "database": EnvVar("DB_NAME", "redsox_stats"),
+        "user": EnvVar("DB_USER", os.getenv("USER")),
+        "password": EnvVar("DB_PASSWORD", "")
     }
 
 

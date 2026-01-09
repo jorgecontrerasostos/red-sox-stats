@@ -1,5 +1,4 @@
 import dagster as dg
-from dagster._core.definitions.partitions.subset import PartitionsSubset
 import statsapi
 import os
 from src.utils.db_connection import get_connection_params
@@ -9,12 +8,12 @@ from psycopg2.extras import Json
 
 
 logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
 
 params = get_connection_params()
+
 
 @dg.asset
 def fetch_game_info() -> dict:
@@ -51,10 +50,7 @@ def fetch_game_info() -> dict:
         cursor.close()
         conn.close()
 
-        return {
-            "games_processed": len(game_info),
-            "target_date": target_date
-        }
+        return {"games_processed": len(game_info), "target_date": target_date}
 
     except psycopg2.OperationalError as e:
         logger.error(f"Connection Failed: {e}")
@@ -62,9 +58,9 @@ def fetch_game_info() -> dict:
     except Exception as e:
         logger.exception(f"Unexpected error during database connection test: {e}")
         raise
-@dg.asset(
-    deps=["fetch_game_info"]
-)
+
+
+@dg.asset(deps=["fetch_game_info"])
 def fetch_game_boxscores():
     conn = psycopg2.connect(**params)
     cursor = conn.cursor()
@@ -116,7 +112,7 @@ def fetch_game_boxscores():
                         raw_json = EXCLUDED.raw_json,
                         ingested_at = NOW()
                     """,
-                    (game_id, player_id, Json(player_data))
+                    (game_id, player_id, Json(player_data)),
                 )
                 total_players += 1
             conn.commit()
@@ -128,9 +124,4 @@ def fetch_game_boxscores():
 
     logger.info(f"Successfully processed {total_players} player records")
 
-    return {
-        "games_processed": len(game_ids),
-        "players_processed": total_players
-    }
-
-
+    return {"games_processed": len(game_ids), "players_processed": total_players}
