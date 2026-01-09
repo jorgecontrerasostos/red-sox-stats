@@ -158,3 +158,9 @@ test_cache.py
 
 LEARNING_LOG.md
 DASHBOARD_PLAN.md
+
+# Dagster
+**/.tmp_dagster_home*/
+**/dagster_home/
+**/*.db_info
+**/*.db_info-journal
