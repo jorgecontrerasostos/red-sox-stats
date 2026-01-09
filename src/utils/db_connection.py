@@ -16,11 +16,11 @@ logger = logging.getLogger(__name__)
 def get_connection_params() -> dict:
     """Get database connection parameters from environment variables."""
     return {
-        "host": EnvVar("DB_HOST", "localhost"),
-        "port": EnvVar("DB_PORT", "5432"),
-        "database": EnvVar("DB_NAME", "redsox_stats"),
-        "user": EnvVar("DB_USER", os.getenv("USER")),
-        "password": EnvVar("DB_PASSWORD", "")
+        "host": EnvVar("DB_HOST").get_value(),
+        "port": EnvVar("DB_PORT").get_value(),
+        "database": EnvVar("DB_NAME").get_value(),
+        "user": EnvVar("DB_USER").get_value(),
+        "password": EnvVar("DB_PASSWORD").get_value()
     }
 
 
