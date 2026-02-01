@@ -164,3 +164,9 @@ DASHBOARD_PLAN.md
 **/dagster_home/
 **/*.db_info
 **/*.db_info-journal
+
+# dbt
+**/profiles.yml
+**/target/
+**/dbt_packages/
+**/logs/
