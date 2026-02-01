@@ -1,0 +1,50 @@
+version: 2
+
+sources:
+  - name: bronze
+    description: "Raw data layer - immutable API Response"
+    database: redsox_stats
+    schema: bronze
+    tables:
+      - name: games
+        description: "Raw game schedule data"
+        columns:
+          - name: game_id
+            description: "MLB unique game identifier"
+            data_tests:
+              - unique
+              - not_null
+          - name: raw_json
+            description: "Raw JSON object with game info"
+            data_tests:
+              - not_null
+          - name: ingested_at
+            description: "Date which the game information was ingested"
+            data_tests:
+              - not_null
+          - name: data_source
+            description: "Source which the data comes from. Default: mlb_statsapi"
+      - name: player_game_stats
+        description: "Raw player box score data"
+        columns:
+          - name: id
+            description: "Unique row identifier"
+            data_tests:
+              - unique
+              - not_null
+          - name: game_id
+            description: "MLB unique game identifier"
+            data_tests:
+              - not_null
+          - name: player_id
+            description: "Unique player identifier"
+            data_tests:
+              - not_null
+          - name: raw_json
+            description: "Raw JSON object with player game info"
+            data_tests:
+              - not_null
+          - name: ingested_at
+            description: "Date which the game information was ingested"
+            data_tests:
+              - not_null
