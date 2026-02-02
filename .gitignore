@@ -170,3 +170,4 @@ DASHBOARD_PLAN.md
 **/target/
 **/dbt_packages/
 **/logs/
+**/dbt_internal_packages/

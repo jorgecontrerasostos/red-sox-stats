@@ -1,22 +1,17 @@
 name: 'redsox_dbt'
 version: '1.0.0'
 
-# This setting configures which "profile" dbt uses for this project.
 profile: 'redsox_dbt'
 
-# These configurations specify where dbt should look for different types of files.
 model-paths: ["models"]
 test-paths: ["tests"]
 macro-paths: ["macros"]
 
-# Configures how dbt handles output across different schemas
 models:
   redsox_dbt:
-    # Silver layer models write to the 'silver' schema
     silver:
       +schema: silver
       +materialized: table
-    # Gold layer models write to the 'gold' schema
     gold:
       +schema: gold
       +materialized: table
