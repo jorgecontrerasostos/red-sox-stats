@@ -17,6 +17,7 @@ SELECT
     (raw_json->'stats'->'batting'->>'stolenBases')::INTEGER AS stolen_bases,
     (raw_json->'stats'->'batting'->>'hitByPitch')::INTEGER AS hit_by_pitch,
     (raw_json->'stats'->'batting'->>'sacFlies')::INTEGER AS sac_flies,
-    (raw_json->'stats'->'batting'->>'plateAppearances')::INTEGER AS plate_appearances
+    (raw_json->'stats'->'batting'->>'plateAppearances')::INTEGER AS plate_appearances,
+    (raw_json->'stats'->'batting'->>'totalBases')::INTEGER AS total_bases
 FROM {{ source('bronze', 'player_game_stats') }}
 WHERE (raw_json->'stats'->'batting'->>'plateAppearances')::INTEGER > 0
